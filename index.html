@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>PsanNetwork</title>
+    <link rel="icon" type="image/jpeg" href="/_6e6ccb16-2e38-4160-9507-a286d8e55b29.jpeg">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+    a.new::after {
+      content: "New";
+      display: inline-block;
+      margin-left: 5px; /* マークとテキストの間のスペースを調整 */
+      padding: 2px 5px; /* マークの背景色を付ける場合、適切なサイズに調整 */
+      background-color: #ff0000; /* マークの背景色を指定 */
+      color: #ffffff; /* マークのテキスト色を指定 */
+      font-weight: bold; /* マークのテキストを太字にする */
+    }
+    </style>
+</head>
+<body>
+    <script src="/ban/ban.js"></script>
+    <canvas id="canvas"></canvas>
+
+    <h1 class="titles">PsanNetwork</h1>
+
+    <p class="parallax-text">こんにちは、Pさんです。よろしくお願いします。</p>
+    <p>ここでは主に便利なツールを投稿していきます。</p>
+    <p>Discord:<a href="https://discord.gg/34Y9jZTtsR">Discord</a></p>
+    <li><a href="/運営リスト.html">運営リスト</a></li>
+    <h2>投稿一覧</h2>
+    <h2>その他</h2>
+    <ul>
+        <li><a href="#" onclick="redirectToSecretNetwork()">secret network</a></li>
+        <li><a href="https://proxy.psannetwork.net">Proxy</a></li>
+        <li><a href="http://fyrmrufnomqm2mhoz4bgwuorhskv4eqs5v2vzrb764x4bx4y2hc7cbqd.onion/">http://fyrmrufnomqm2mhoz4bgwuorhskv4eqs5v2vzrb764x4bx4y2hc7cbqd.onion/</a></li>
+    </ul>
+    <script src="script.js"></script>
+    
+
+
+
+<h2>Chat</h2>
+    <div class="chatlist"></div>
+    <div class="chatsend"></div>
+
+    <script>
+        const idValue = "psannetwork";
+    </script>
+    <script>
+        var sendButton;
+
+        inject();
+
+        function inject() {
+            var existingDiv = document.querySelector('.chatcode');
+            if (existingDiv) {
+                return;
+            }
+
+            var div = document.createElement('div');
+            div.classList.add('chatcode');
+            div.innerHTML = `
+                <input type="text" name="text" placeholder="Text">
+                <input type="text" name="name" placeholder="Name">
+                <button onclick="sendData()">Send</button>
+            `;
+
+            var chatlist = document.querySelector('.chatsend');
+            chatlist.appendChild(div);
+
+            sendButton = document.querySelector('.chatcode button');
+        }
+
+        function Getchat() {
+            var gasUrl = 'https://script.google.com/macros/s/AKfycbwfPglE22DreTD3X6s69WdOV3mh3C71a9DSyZLuR3YAz74ADc3b8EyCCJDfc1OogeUt/exec';
+            var url = gasUrl + '?id=' + idValue; 
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    displayChat(data);
+                } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                    console.error('Error:', xhr.status);
+                }
+            };
+            xhr.send();
+        }
+
+        function displayChat(data) {
+            var chatDiv = document.querySelector('.chatlist');
+            
+            chatDiv.innerHTML = '';
+            data.forEach(chat => {
+                var chatItem = document.createElement('div');
+                chatItem.classList.add('chat-item');
+
+                var chatText = document.createElement('p');
+                var date = new Date(chat['時間']);
+                var formattedDate = date.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
+                chatText.textContent = formattedDate + ' - ' + chat['名前'] + ': ' + chat['テキスト'];
+
+                chatItem.appendChild(chatText);
+                chatDiv.appendChild(chatItem);
+            });
+        }
+
+        function sendData() {
+            sendButton.disabled = true;
+
+            var textValue = document.querySelector('.chatcode input[name="text"]').value;
+            var nameValue = document.querySelector('.chatcode input[name="name"]').value;
+
+            var url = 'https://script.google.com/macros/s/AKfycbxRu9DXL6lsTUH_BaIVEV8OEUhzaAKEgWidBkye3e4_jQ8cJYHieBGQLWbWt2kOdG5lxA/exec' + '?id=' + encodeURIComponent(idValue) + '&text=' + encodeURIComponent(textValue) + '&name=' + encodeURIComponent(nameValue);
+fetch(url)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to send message');
+    }
+    return response.text();
+  })
+  .then(data => {
+    console.log(data); 
+
+    var successMsg = document.createElement('p');
+    successMsg.textContent = data;
+    document.querySelector('.chatcode').appendChild(successMsg);
+    setTimeout(() => {
+      successMsg.remove();
+    }, 2000);
+    
+    Getchat(); 
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  })
+  .finally(() => {
+    sendButton.disabled = false;
+  });
+
+
+        }
+
+        setInterval(function() {
+            Getchat();
+        }, 10000);
+
+        Getchat();
+    </script>
+</body>
+</html>
