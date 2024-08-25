@@ -1,145 +1,70 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta charset="UTF-8">
-    <title>PsanNetwork</title>
-    <link rel="icon" type="image/jpeg" href="/_6e6ccb16-2e38-4160-9507-a286d8e55b29.jpeg">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psannetwork Blog</title>
     <style>
-    a.new::after {
-      content: "New";
-      display: inline-block;
-      margin-left: 5px;
-      padding: 2px 5px; 
-      background-color: #ff0000; 
-      color: #ffffff;
-      font-weight: bold;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
+    <header>
+        <h1>Welcome to Psannetwork Blog</h1>
+    </header>
 
-    <h1 class="titles">PsanNetwork</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+    </nav>
 
-    <p class="parallax-text">こんにちは、Pさんです。よろしくお願いします。</p>
-    <p>ここでは主に便利なツールを投稿していきます。</p>
-    <p>Discord:<a href="https://discord.gg/34Y9jZTtsR">Discord</a></p>
-    <li><a href="/運営リスト.html">運営リスト</a></li>
-    <h2>投稿一覧</h2>
-    <h2>その他</h2>
-    <ul>
-        <li><a href="https://proxy.psannetwork.net">Proxy</a></li>
-        <li><a href="http://fyrmrufnomqm2mhoz4bgwuorhskv4eqs5v2vzrb764x4bx4y2hc7cbqd.onion/">http://fyrmrufnomqm2mhoz4bgwuorhskv4eqs5v2vzrb764x4bx4y2hc7cbqd.onion/</a></li>
-    </ul>
-    <script src="script.js"></script>
-    
-    <h2>Chat</h2>
-    <div class="chatlist"></div>
-    <div class="chatsend"></div>
+    <div class="container">
+        <h2>Latest Posts</h2>
+        <ul>
+            <li><a href="https://youtubedownload.psannetwork.net/">Youtubeダウンローダー</a></li>
+            <li><a href="https://psannetwork.net/uploader/index.html">ファイルアップローダー</a></li>
+            <li><a href="https://proxy.psannetwork.net/">BBS-Proxy</a></li>
+        </ul>
+    </div>
 
-    <script>
-        const idValue = "psannetwork";
-    </script>
-    <script>
-        var sendButton;
-
-        inject();
-
-        function inject() {
-            var existingDiv = document.querySelector('.chatcode');
-            if (existingDiv) {
-                return;
-            }
-
-            var div = document.createElement('div');
-            div.classList.add('chatcode');
-            div.innerHTML = `
-                <input type="text" name="text" placeholder="Text">
-                <input type="text" name="name" placeholder="Name">
-                <button onclick="sendData()">Send</button>
-            `;
-
-            var chatlist = document.querySelector('.chatsend');
-            chatlist.appendChild(div);
-
-            sendButton = document.querySelector('.chatcode button');
-        }
-
-        function Getchat() {
-            var gasUrl = 'https://script.google.com/macros/s/AKfycbwfPglE22DreTD3X6s69WdOV3mh3C71a9DSyZLuR3YAz74ADc3b8EyCCJDfc1OogeUt/exec';
-            var url = gasUrl + '?id=' + idValue; 
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-                    displayChat(data);
-                } else if (xhr.readyState === 4 && xhr.status !== 200) {
-                    console.error('Error:', xhr.status);
-                }
-            };
-            xhr.send();
-        }
-
-        function displayChat(data) {
-            var chatDiv = document.querySelector('.chatlist');
-            
-            chatDiv.innerHTML = '';
-            data.forEach(chat => {
-                var chatItem = document.createElement('div');
-                chatItem.classList.add('chat-item');
-
-                var chatText = document.createElement('p');
-                var date = new Date(chat['時間']);
-                var formattedDate = date.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
-                chatText.textContent = formattedDate + ' - ' + chat['名前'] + ': ' + chat['テキスト'];
-
-                chatItem.appendChild(chatText);
-                chatDiv.appendChild(chatItem);
-            });
-        }
-
-        function sendData() {
-            sendButton.disabled = true;
-
-            var textValue = document.querySelector('.chatcode input[name="text"]').value;
-            var nameValue = document.querySelector('.chatcode input[name="name"]').value;
-
-            var url = 'https://script.google.com/macros/s/AKfycbxRu9DXL6lsTUH_BaIVEV8OEUhzaAKEgWidBkye3e4_jQ8cJYHieBGQLWbWt2kOdG5lxA/exec' + '?id=' + encodeURIComponent(idValue) + '&text=' + encodeURIComponent(textValue) + '&name=' + encodeURIComponent(nameValue);
-fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to send message');
-    }
-    return response.text();
-  })
-  .then(data => {
-    console.log(data); 
-
-    var successMsg = document.createElement('p');
-    successMsg.textContent = data;
-    document.querySelector('.chatcode').appendChild(successMsg);
-    setTimeout(() => {
-      successMsg.remove();
-    }, 2000);
-    
-    Getchat(); 
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  })
-  .finally(() => {
-    sendButton.disabled = false;
-  });
-        }
-
-        setInterval(function() {
-            Getchat();
-        }, 10000);
-
-        Getchat();
-    </script>
+    <footer>
+        <p>&copy; 2024 Psannetwork. All rights reserved.</p>
+    </footer>
 </body>
 </html>
