@@ -220,8 +220,8 @@
                 const y = drop * 20;
                 const char = charArray[Math.floor(Math.random() * charArray.length)];
                 ctx.fillText(char, x, y);
-                drops[index] = drop + 0.1;
-                if (drop * 20 > canvas.height && Math.random() > 0.975) {
+                drops[index] = drop + 0.05; // 速度を遅くする
+                if (drop * 20 > canvas.height && Math.random() > 0.95) { // 消える確率を低くする
                     drops[index] = 0;
                 }
             });
