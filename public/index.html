@@ -11,12 +11,12 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #1c1c1c;
+            color: #e0e0e0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow: hidden; /* スクロールを防ぐ */
+            overflow: hidden;
         }
         #background-view {
             position: absolute;
@@ -24,12 +24,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* 他の要素の後ろに配置 */
+            z-index: -1;
         }
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px 0; /* 縦のスペースを縮小 */
+            padding: 10px 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -37,13 +37,12 @@
         }
         header h1 {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 1.8em; /* フォントサイズを縮小 */
+            font-size: 1.8em;
             margin: 0;
-            position: relative;
             display: inline-block;
             white-space: nowrap;
-            color: #0f0; /* ドット風の色 */
-            border-right: 2px solid #fff; /* ボーダーを細くする */
+            color: #0f0;
+            border-right: 2px solid #fff;
             overflow: hidden;
             width: 0;
             animation: typing 3.5s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
@@ -57,16 +56,16 @@
         }
         nav {
             background-color: #444;
-            padding: 8px 0; /* 縦のスペースを縮小 */
+            padding: 8px 0;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         nav a {
             color: #fff;
-            margin: 0 10px; /* マージンを縮小 */
+            margin: 0 10px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px; /* フォントサイズを縮小 */
+            font-size: 14px;
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         nav a:hover {
@@ -77,14 +76,14 @@
             padding: 20px;
             max-width: 1200px;
             margin: 20px auto;
-            background: #fff;
+            background: #2b2b2b;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             flex: 1;
         }
         h2 {
-            color: #333;
-            border-bottom: 2px solid #333;
+            color: #e0e0e0;
+            border-bottom: 2px solid #e0e0e0;
             padding-bottom: 5px;
             margin-bottom: 20px;
             position: relative;
@@ -122,15 +121,15 @@
         }
         ul li a {
             text-decoration: none;
-            color: #007bff;
-            font-size: 16px; /* フォントサイズを縮小 */
+            color: #00aaff;
+            font-size: 16px;
             padding: 8px;
             display: block;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
         ul li a:hover {
-            background-color: #f8f9fa;
+            background-color: #3a3a3a;
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -140,11 +139,9 @@
             text-align: center;
             padding: 10px 0;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
-            position: relative; /* スクロール時に表示されるように修正 */
-            z-index: 1; /* 他の要素より前面に表示 */
+            position: relative;
+            z-index: 1;
         }
-
-        /* モバイル対応スタイル */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.6em;
@@ -202,24 +199,17 @@
     <script>
         const canvas = document.getElementById('background-view');
         const ctx = canvas.getContext('2d');
-
-        // Canvas サイズを設定
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         const cols = Math.floor(canvas.width / 20);
-        const rows = Math.floor(canvas.height / 20);
-
-        // 文字と色の設定
+        const drops = Array.from({ length: cols }, () => 0);
         const chars = '01';
         const charArray = chars.split('');
         const charColor = '#0f0';
 
-        // カラムごとのドロップデータ
-        const drops = Array.from({ length: cols }, () => 0);
-
         function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // 背景の透明度
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = charColor;
@@ -228,14 +218,9 @@
             drops.forEach((drop, index) => {
                 const x = index * 20;
                 const y = drop * 20;
-
                 const char = charArray[Math.floor(Math.random() * charArray.length)];
                 ctx.fillText(char, x, y);
-
-                // ドロップを下に移動
-                drops[index] = drop + 0.5; // 移動速度を遅くする
-
-                // リセット
+                drops[index] = drop + 0.1; // スピードを遅くする
                 if (drop * 20 > canvas.height && Math.random() > 0.975) {
                     drops[index] = 0;
                 }
@@ -246,7 +231,6 @@
 
         draw();
 
-        // ウィンドウサイズ変更時にキャンバスサイズを更新
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
