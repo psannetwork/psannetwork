@@ -29,7 +29,7 @@
         header {
             background-color: #333;
             color: #fff;
-            padding: 20px 0;
+            padding: 10px 0; /* 縦のスペースを縮小 */
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             position: relative;
@@ -37,13 +37,13 @@
         }
         header h1 {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 2.2em;
+            font-size: 1.8em; /* フォントサイズを縮小 */
             margin: 0;
             position: relative;
             display: inline-block;
             white-space: nowrap;
             color: #0f0; /* ドット風の色 */
-            border-right: 3px solid #fff;
+            border-right: 2px solid #fff; /* ボーダーを細くする */
             overflow: hidden;
             width: 0;
             animation: typing 3.5s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
@@ -57,15 +57,16 @@
         }
         nav {
             background-color: #444;
-            padding: 15px;
+            padding: 8px 0; /* 縦のスペースを縮小 */
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         nav a {
             color: #fff;
-            margin: 0 15px;
+            margin: 0 10px; /* マージンを縮小 */
             text-decoration: none;
             font-weight: bold;
+            font-size: 14px; /* フォントサイズを縮小 */
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
         nav a:hover {
@@ -122,8 +123,8 @@
         ul li a {
             text-decoration: none;
             color: #007bff;
-            font-size: 18px;
-            padding: 10px;
+            font-size: 16px; /* フォントサイズを縮小 */
+            padding: 8px;
             display: block;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -139,12 +140,14 @@
             text-align: center;
             padding: 10px 0;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            position: relative; /* スクロール時に表示されるように修正 */
+            z-index: 1; /* 他の要素より前面に表示 */
         }
 
         /* モバイル対応スタイル */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 1.8em;
+                font-size: 1.6em;
                 border-right: 2px solid #fff;
             }
             .container {
@@ -152,17 +155,17 @@
                 max-width: 100%;
             }
             nav {
-                font-size: 14px;
+                font-size: 12px;
             }
             nav a {
-                margin: 0 8px;
+                margin: 0 6px;
             }
             ul li::before {
                 left: -20px;
                 font-size: 18px;
             }
             ul li a {
-                font-size: 16px;
+                font-size: 14px;
                 padding: 8px;
             }
         }
@@ -230,7 +233,7 @@
                 ctx.fillText(char, x, y);
 
                 // ドロップを下に移動
-                drops[index] = drop + 1;
+                drops[index] = drop + 0.5; // 移動速度を遅くする
 
                 // リセット
                 if (drop * 20 > canvas.height && Math.random() > 0.975) {
