@@ -16,6 +16,15 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            overflow: hidden; /* スクロールを防ぐ */
+        }
+        #background-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* 他の要素の後ろに配置 */
         }
         header {
             background-color: #333;
@@ -160,6 +169,7 @@
     </style>
 </head>
 <body>
+    <canvas id="background-view"></canvas>
     <header>
         <h1>Welcome to Psannetwork</h1>
     </header>
@@ -185,5 +195,59 @@
     <footer>
         <p>&copy; 2024 Psannetwork. All rights reserved.</p>
     </footer>
+
+    <script>
+        const canvas = document.getElementById('background-view');
+        const ctx = canvas.getContext('2d');
+
+        // Canvas サイズを設定
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const cols = Math.floor(canvas.width / 20);
+        const rows = Math.floor(canvas.height / 20);
+
+        // 文字と色の設定
+        const chars = '01';
+        const charArray = chars.split('');
+        const charColor = '#0f0';
+
+        // カラムごとのドロップデータ
+        const drops = Array.from({ length: cols }, () => 0);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // 背景の透明度
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = charColor;
+            ctx.font = '20px monospace';
+
+            drops.forEach((drop, index) => {
+                const x = index * 20;
+                const y = drop * 20;
+
+                const char = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(char, x, y);
+
+                // ドロップを下に移動
+                drops[index] = drop + 1;
+
+                // リセット
+                if (drop * 20 > canvas.height && Math.random() > 0.975) {
+                    drops[index] = 0;
+                }
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+
+        // ウィンドウサイズ変更時にキャンバスサイズを更新
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
