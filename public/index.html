@@ -216,8 +216,8 @@
             ctx.font = '20px monospace';
 
             drops.forEach((drop, index) => {
-                const x = index * 40;
-                const y = drop * 40;
+                const x = index * 20;
+                const y = drop * 20;
                 const char = charArray[Math.floor(Math.random() * charArray.length)];
                 ctx.fillText(char, x, y);
                 drops[index] = drop + 0.2;
