@@ -213,14 +213,14 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = charColor;
-            ctx.font = '25px monospace';
+            ctx.font = '20px monospace';
 
             drops.forEach((drop, index) => {
                 const x = index * 20;
                 const y = drop * 20;
                 const char = charArray[Math.floor(Math.random() * charArray.length)];
                 ctx.fillText(char, x, y);
-                drops[index] = drop + 0.2; 
+                drops[index] = drop + 0.3; 
                 if (drop * 20 > canvas.height && Math.random() > 0.95) {
                     drops[index] = 0;
                 }
