@@ -209,7 +209,7 @@
         const charColor = '#0f0';
 
         function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';  // 長めに残るように透明度を下げる
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';  
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = charColor;
@@ -220,10 +220,10 @@
                 const y = drop * 20;
                 const char = charArray[Math.floor(Math.random() * charArray.length)];
                 ctx.fillText(char, x, y);
-                drops[index] = drop + 0.2;  // 速度を遅くする
+                drops[index] = drop + 0.2;  
 
                 if (drop * 20 > canvas.height && Math.random() > 0.975) {
-                    drops[index] = 0;  // 再出発地点を調整
+                    drops[index] = 0; 
                 }
             });
 
