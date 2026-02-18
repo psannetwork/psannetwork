@@ -11,7 +11,6 @@
 
 #### 🌐 Web Apps & APIs
 - [**cloudvar**](https://github.com/psannetwork/cloudvar) - クラウド変数を簡単に扱うためのJavaScriptライブラリ。
-- [**qa4u**](https://github.com/psannetwork/qa4u) - シンプルで匿名性の高いQ&Aプラットフォーム。
 - [**swim-live**](https://github.com/psannetwork/swim-live) - 水泳の記録を効率的に取得するスクレイピングツール。
 
 #### 🎮 Browser Games
