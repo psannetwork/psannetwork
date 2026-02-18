@@ -10,6 +10,7 @@
 ### 🛠 Featured Projects
 
 #### 🌐 Web Apps & APIs
+- [**youtube**](https://github.com/psannetwork/youtube) - 動画検索・閲覧をサポートするフルスタックWebアプリケーション。
 - [**cloudvar**](https://github.com/psannetwork/cloudvar) - クラウド変数を簡単に扱うためのJavaScriptライブラリ。
 - [**swim-live**](https://github.com/psannetwork/swim-live) - 水泳の記録を効率的に取得するスクレイピングツール。
 
