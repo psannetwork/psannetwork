@@ -1,9 +1,9 @@
 # 👋 Hi, I'm @psannetwork
 
-### 🚀 High School Programmer / Full Stack Developer
+### 🚀 Software Engineer / Web Developer
 
-高校生プログラマーとして、実用的なツールの開発からブラウザゲームの制作まで、幅広く活動しています。  
-主に「既存の不便を解消するツール」や「シンプルで楽しい体験」を作ることに注力しています。
+実用的な自動化ツールの開発から、ブラウザ上で動作するゲーム制作まで幅広く活動しています。  
+「不便を解決する技術」と「使って楽しい体験」を両立させるプロダクトを目指しています。
 
 ---
 
@@ -34,7 +34,8 @@
 
 ### 📫 Contact & Links
 
-- **Website:** [psannetworks.netlify.app](https://psannetworks.netlify.app/)
+- **Main Blog:** [blog.psannetwork.net](https://blog.psannetwork.net/) (Upcoming)
+- **Current Site:** [psannetworks.netlify.app](https://psannetworks.netlify.app/)
 - **Discord:** [Join Community](https://discord.gg/34Y9jZTtsR)
 - **Instagram:** [@pswitch0224](https://www.instagram.com/pswitch0224/)
 
