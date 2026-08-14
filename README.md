@@ -24,7 +24,7 @@
 
 ---
 
-## 🚀 Featured Projects（3件）
+## 🚀 Featured Projects（6件）
 
 ### 1) 🎮 tetris-pub — オンライン対戦テトリス
 - 複数プレイヤー同時対戦を実現したブラウザゲーム
@@ -44,18 +44,23 @@
 - 強み: プロダクト設計と公開運用を一体化
 - 🔗 https://github.com/psannetwork/Svelte-site-blog
 
----
+### 4) ☁️ cloudvar — クラウド変数・ストレージツール
+- 軽量なデータ共有やクラウド連携を叶えるユーティリティ
+- 技術: Web / API連携
+- 強み: データの簡易永続化と取り回しの良さ
+- 🔗 https://github.com/psannetwork/cloudvar
 
-## 📌 Recommended Pinned Repositories（固定表示推奨6件）
+### 5) 📺 youtube — Webベースの動画ダウンローダー・ツール
+- Webブラウザ上から手軽に動画・リソースを扱うツール
+- 技術: Web Frontend / Backend
+- 強み: 実用的なユーティリティの迅速なプロダクト化
+- 🔗 https://github.com/psannetwork/youtube
 
-1. [tetris-pub](https://github.com/psannetwork/tetris-pub)
-2. [socket-chat-new](https://github.com/psannetwork/socket-chat-new)
-3. [Svelte-site-blog](https://github.com/psannetwork/Svelte-site-blog)
-4. [cloudvar](https://github.com/psannetwork/cloudvar)
-5. [youtube](https://github.com/psannetwork/youtube)
-6. [React-blog](https://github.com/psannetwork/React-blog)
-
-> Pin設定はGitHubプロフィール画面から手動で更新してください。
+### 6) ⚛️ React-blog — React製ブログプラットフォーム
+- モダンなReactエコシステムを活用したブログ構築リポジトリ
+- 技術: React / Component設計
+- 強み: コンポーネント指向による拡張性と保守性の高いUI
+- 🔗 https://github.com/psannetwork/React-blog
 
 ---
 
@@ -67,28 +72,6 @@
 | Games | [puyopuyo](https://github.com/psannetwork/puyopuyo) |
 | Web Tools / Services | [youtube-searcher](https://github.com/psannetwork/youtube-searcher), [fileuploader-svelte](https://github.com/psannetwork/fileuploader-svelte) |
 | Automation | [Qskill-auto](https://github.com/psannetwork/Qskill-auto), [terabox-list](https://github.com/psannetwork/terabox-list), [terabox-upload-tool](https://github.com/psannetwork/terabox-upload-tool) |
-
----
-
-## ✅ Main Repo Quality Checklist（主要Repo共通）
-
-主要RepoのREADMEは、最低限以下を揃える運用にします。
-
-- 概要（何を解決するプロジェクトか）
-- 技術スタック
-- デモURL（あれば）
-- セットアップ手順
-- スクリーンショット
-- Topics の統一（例: `webrtc`, `socketio`, `svelte`, `game-dev`）
-
-命名が伝わりにくいRepoは、Descriptionで目的を明確化します。
-
----
-
-## 🔁 Maintenance Rules（運用ルール）
-
-- 新規公開時に、まず「Real-time / Game Dev / Web/Product」のどれに属するかを決める
-- 月1回、Pinned 6件と本READMEの掲載内容を見直す
 
 ---
 
